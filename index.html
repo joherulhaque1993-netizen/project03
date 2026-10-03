@@ -1,1 +1,239 @@
 
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>কাতলাসেন কাদেরিয়া কামিল মাদ্রাসা</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- CSS -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="header-datetime" id="headerDateTime"></div>
+
+<header class="site-header">
+  <h1>কাতলাসেন কাদেরিয়া কামিল মাদ্রাসা</h1>
+  <p>ময়মনসিংহ সদর, ময়মনসিংহ | প্রতিষ্ঠাকাল: ১৮৯০</p>
+</header>
+
+<nav class="main-nav">
+  <ul>
+    <li><a href="#home"><i class="fa-solid fa-house"></i> হোম</a></li>
+    <li><a href="#about"><i class="fa-solid fa-mosque"></i> মাদ্রাসা পরিচিতি</a></li>
+    <li><a href="#goals"><i class="fa-solid fa-bullseye"></i> লক্ষ ও উদ্দেশ্য</a></li>
+    <li><a href="#admission"><i class="fa-solid fa-user-plus"></i> অনলাইন ভর্তি আবেদন</a></li>
+    <li><a href="#online-service"><i class="fa-solid fa-toolbox"></i> অনলাইন সেবা</a></li>
+    <li><a href="#notice"><i class="fa-solid fa-bell"></i> নোটিশ</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <section id="home" class="section-home">
+    <h2>আপনাকে স্বাগতম</h2>
+    <p>কাতলাসেন কাদেরিয়া কামিল মাদ্রাসার ওয়েবসাইটে আপনাকে স্বাগতম। এখানে প্রতিষ্ঠানের সকল তথ্য, ভর্তি প্রক্রিয়া এবং সর্বশেষ নোটিশ পাওয়া যাবে।</p>
+  </section>
+
+  <section id="about" class="section-about">
+    <h2>মাদ্রাসা পরিচিতি</h2>
+    <p>১৮৯০ সালে প্রতিষ্ঠিত কাতলাসেন কাদেরিয়া কামিল মাদ্রাসা ময়মনসিংহ সদরে অবস্থিত একটি প্রাচীন ও ঐতিহ্যবাহী শিক্ষা প্রতিষ্ঠান, যেখানে কামিল স্তর পর্যন্ত শিক্ষা প্রদান করা হয়।</p>
+  </section>
+
+  <section id="goals" class="section-goals">
+    <h2>লক্ষ ও উদ্দেশ্য</h2>
+    <p>ইসলামি জ্ঞানের পাশাপাশি আধুনিক শিক্ষায় শিক্ষার্থীদের দক্ষ করে তোলা এবং নৈতিক ও যোগ্য নাগরিক হিসেবে গড়ে তোলাই এই প্রতিষ্ঠানের মূল লক্ষ্য।</p>
+  </section>
+
+  <section id="admission" class="section-admission">
+    <h2>অনলাইন ভর্তি আবেদন</h2>
+    <p>ভর্তি ফরম পূরণ করতে হলে প্রথমে লগইন করতে হবে। অ্যাকাউন্ট না থাকলে রেজিস্ট্রেশন করুন।</p>
+
+    <!-- Login / Register Gate -->
+    <div class="auth-gate" id="authGate">
+
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab active" id="showLoginBtn">লগইন</button>
+        <button type="button" class="auth-tab" id="showRegisterBtn">রেজিস্ট্রেশন</button>
+      </div>
+
+      <!-- Login Form -->
+      <form class="auth-form" id="loginForm">
+        <div class="form-group">
+          <label for="loginUser">মোবাইল নম্বর</label>
+          <input type="text" id="loginUser" name="loginUser" placeholder="০১XXXXXXXXX" required>
+        </div>
+        <div class="form-group">
+          <label for="loginPass">পাসওয়ার্ড</label>
+          <input type="password" id="loginPass" name="loginPass" required>
+        </div>
+        <button type="submit" class="submit-btn"><i class="fa-solid fa-right-to-bracket"></i> লগইন করুন</button>
+        <p class="form-status" id="loginStatus"></p>
+      </form>
+
+      <!-- Register Form -->
+      <form class="auth-form" id="registerForm" style="display:none;">
+        <div class="form-group">
+          <label for="regUser">মোবাইল নম্বর</label>
+          <input type="text" id="regUser" name="regUser" placeholder="০১XXXXXXXXX" required pattern="01[0-9]{9}">
+        </div>
+        <div class="form-group">
+          <label for="regPass">পাসওয়ার্ড</label>
+          <input type="password" id="regPass" name="regPass" required minlength="4">
+        </div>
+        <button type="submit" class="submit-btn"><i class="fa-solid fa-user-plus"></i> রেজিস্ট্রেশন করুন</button>
+        <p class="form-status" id="registerStatus"></p>
+      </form>
+
+    </div>
+
+    <!-- Admission Form (hidden until logged in) -->
+    <div id="admissionWrapper" style="display:none;">
+
+      <div class="logged-in-bar">
+        <span id="loggedInUser"></span>
+        <button type="button" id="logoutBtn" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> লগআউট</button>
+      </div>
+
+      <form class="admission-form" id="admissionForm">
+
+      <div class="form-group">
+        <label for="studentName">শিক্ষার্থীর পূর্ণ নাম <span class="required">*</span></label>
+        <input type="text" id="studentName" name="studentName" placeholder="শিক্ষার্থীর নাম লিখুন" required>
+      </div>
+
+      <div class="form-group">
+        <label for="fatherName">পিতার নাম <span class="required">*</span></label>
+        <input type="text" id="fatherName" name="fatherName" placeholder="পিতার নাম লিখুন" required>
+      </div>
+
+      <div class="form-group">
+        <label for="motherName">মাতার নাম <span class="required">*</span></label>
+        <input type="text" id="motherName" name="motherName" placeholder="মাতার নাম লিখুন" required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="dob">জন্ম তারিখ <span class="required">*</span></label>
+          <input type="date" id="dob" name="dob" required>
+        </div>
+
+        <div class="form-group">
+          <label for="gender">লিঙ্গ <span class="required">*</span></label>
+          <select id="gender" name="gender" required>
+            <option value="">নির্বাচন করুন</option>
+            <option value="male">ছাত্র</option>
+            <option value="female">ছাত্রী</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="classApply">যে শ্রেণিতে ভর্তি হতে চান <span class="required">*</span></label>
+          <select id="classApply" name="classApply" required>
+            <option value="">নির্বাচন করুন</option>
+            <option value="ইবতেদায়ী">ইবতেদায়ী</option>
+            <option value="দাখিল">দাখিল</option>
+            <option value="আলিম">আলিম</option>
+            <option value="ফাজিল">ফাজিল</option>
+            <option value="কামিল">কামিল</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="prevSchool">পূর্ববর্তী প্রতিষ্ঠানের নাম</label>
+          <input type="text" id="prevSchool" name="prevSchool" placeholder="পূর্ববর্তী প্রতিষ্ঠানের নাম (যদি থাকে)">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">বর্তমান ঠিকানা <span class="required">*</span></label>
+        <textarea id="address" name="address" rows="3" placeholder="গ্রাম/মহল্লা, ডাকঘর, উপজেলা, জেলা" required></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="mobile">মোবাইল নম্বর <span class="required">*</span></label>
+          <input type="tel" id="mobile" name="mobile" placeholder="০১XXXXXXXXX" pattern="01[0-9]{9}" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">ইমেইল (ঐচ্ছিক)</label>
+          <input type="email" id="email" name="email" placeholder="example@mail.com">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="photo">শিক্ষার্থীর ছবি <span class="required">*</span></label>
+        <input type="file" id="photo" name="photo" accept="image/*" required>
+      </div>
+
+      <div class="form-group checkbox-group">
+        <input type="checkbox" id="agree" name="agree" required>
+        <label for="agree">আমি প্রদত্ত সকল তথ্য সঠিক বলে নিশ্চিত করছি</label>
+      </div>
+
+      <button type="submit" class="submit-btn"><i class="fa-solid fa-paper-plane"></i> আবেদন জমা দিন</button>
+
+      <p class="form-status" id="formStatus"></p>
+
+      </form>
+    </div>
+  </section>
+
+  <section id="online-service" class="section-online-service">
+    <h2>অনলাইন সেবা</h2>
+    <p>শিক্ষার্থী ও অভিভাবকদের সুবিধার্থে এখানে বিভিন্ন অনলাইন টুলস দেওয়া হলো। নিচে বয়স নির্ণয় ক্যালকুলেটর ব্যবহার করে জন্ম তারিখ দিয়ে বর্তমান বয়স জানতে পারবেন।</p>
+
+    <div class="age-calculator">
+      <div class="form-group">
+        <label for="ageDob">জন্ম তারিখ</label>
+        <input type="date" id="ageDob" name="ageDob">
+      </div>
+
+      <button type="button" id="calcAgeBtn" class="submit-btn"><i class="fa-solid fa-calculator"></i> বয়স নির্ণয় করুন</button>
+
+      <p class="form-status" id="ageResult"></p>
+    </div>
+
+    <div class="syllabus-tracker">
+      <h3>📘 আলিম প্রথম বর্ষ — সিলেবাস অগ্রগতি</h3>
+
+      <div class="syllabus-input-row">
+        <input type="text" id="syllabusInput" placeholder="নতুন বিষয় লিখুন..." maxlength="80">
+        <button type="button" id="syllabusAddBtn" class="submit-btn"><i class="fa-solid fa-plus"></i> যোগ করুন</button>
+      </div>
+
+      <ul class="syllabus-list" id="syllabusList"></ul>
+
+      <div class="progress-wrap">
+        <p class="progress-text" id="progressText">0% সম্পন্ন</p>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="notice" class="section-notice">
+    <h2>নোটিশ</h2>
+    <p>প্রতিষ্ঠানের পরীক্ষা, ছুটি, ভর্তি ও অন্যান্য গুরুত্বপূর্ণ ঘোষণা সংক্রান্ত সকল নোটিশ এখানে প্রকাশ করা হয়।</p>
+  </section>
+
+</main>
+
+<button id="backToTop" title="উপরে যান"><i class="fa-solid fa-arrow-up"></i></button>
+
+<footer class="site-footer">
+  <p>&copy; <span id="year"></span> কাতলাসেন কাদেরিয়া কামিল মাদ্রাসা। সর্বস্বত্ব সংরক্ষিত।</p>
+</footer>
+
+<!-- JS -->
+<script src="script.js"></script>
+</body>
+</html>
